@@ -1,0 +1,15 @@
+server: 
+   ingress:
+     enabled: true
+     ingressClassName: nginx
+     annotations: 
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+     hosts: 
+      - argocd.thefinisher.xyz
+     https: true
+     tls:
+     - hosts:
+       -  argocd.thefinisher.xyz
+       secretName: argocd-secret
