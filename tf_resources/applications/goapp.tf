@@ -1,4 +1,4 @@
-resource "kubectl_manifest" "test" {
+resource "kubectl_manifest" "goapp" {
   yaml_body = <<YAML
 apiVersion: argoproj.io/v1alpha1
 kind: Application
