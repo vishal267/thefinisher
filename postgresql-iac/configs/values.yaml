@@ -1,0 +1,57 @@
+# values.yaml
+replication:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi  
+  replica:
+    persistence:
+      enabled: true
+      size: 8Gi  
+postgresql:
+  username: postgres         
+  password: mysecretpassword 
+  database: mydb            
+
+resources:
+  requests:
+    memory: "512Mi"    
+    cpu: "500m"        
+  limits:
+    memory: "1Gi"      
+    cpu: "1"           
+
+service:
+  type: ClusterIP  
+
+replicaCount: 3  
+
+persistence:
+  enabled: true      
+  size: 10Gi          
+  storageClass: "standard"  
+
+image:
+  tag: "17.4.0-debian-12-r11"
+
+
+podAnnotations: {}   
+podAffinity: {}      
+podAntiAffinity: {}  
+
+postgresqlSSL:
+  enabled: false  
+
+backups:
+  enabled: false           
+  schedule: "0 0 * * *"   
+  retention: 7             
+
+metrics:
+  enabled: false 
+
+extraEnvVars:
+  - name: PGDATA
+    value: "/bitnami/postgresql/data/pgdata"
+
