@@ -60,7 +60,7 @@ injector:
 
   # If true, will enable a node exporter metrics endpoint at /metrics.
   metrics:
-    enabled: false
+    enabled: true
 
   # Deprecated: Please use global.externalVaultAddr instead.
   externalVaultAddr: ""
@@ -873,8 +873,8 @@ server:
   # Helm project by default.  It is possible to manually configure Vault to use a
   # different HA backend.
   ha:
-    enabled: false
-    replicas: 3
+    enabled: true
+    replicas: 2
 
     # Set the api_addr configuration for Vault HA
     # See https://developer.hashicorp.com/vault/docs/configuration#api_addr

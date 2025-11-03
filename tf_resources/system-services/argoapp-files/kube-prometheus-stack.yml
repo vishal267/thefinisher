@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "kube-prometheus-stack"
+  namespace: "argo-cd"
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: 'kube-prometheus-stack'
+  source:
+    path: 'charts/kube-prometheus-stack'
+    repoURL: 'https://github.com/vishal267/thefinisher/'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+  project: 'default'
+  syncPolicy:
+    automated:
+      prune: true  # Optional: Automatically prune resources that are no longer tracked
+      selfHeal: true  # Optional: Automatically sync resources
+    syncOptions:
+      - CreateNamespace=true  # Ensure this is correctly nested    
